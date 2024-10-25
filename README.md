@@ -1,6 +1,6 @@
-# Auto Close Tag
+# Auto Close Empty Tag
 
-[![CI](https://github.com/formulahendry/vscode-auto-close-tag/actions/workflows/main.yml/badge.svg)](https://github.com/formulahendry/vscode-auto-close-tag/actions/workflows/main.yml)
+[![CI](https://github.com/scansio/vscode-auto-close-empty-tag/actions/workflows/main.yml/badge.svg)](https://github.com/scansio/vscode-auto-close-empty-tag/actions/workflows/main.yml)
 
 Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text does.
 
@@ -20,7 +20,7 @@ From VS Code 1.16, it has [built-in close tag support](https://code.visualstudio
 * After closing tag is inserted, the cursor is between the opening and closing tag
 * Set the tag list that would not be auto closed
 * Automatically close self-closing tag
-* Support auto close tag as Sublime Text 3
+* Support Auto Close Empty Tag as Sublime Text 3
 * Use Keyboard Shortcut or Command Palette to add close tag manually
 
 ## Usages
@@ -29,49 +29,17 @@ After typing in the closing bracket of the opening tag, the closing tag will be 
 
 ![Usage](images/usage.gif)
 
-To add close tag manually, use shortcut `Alt+.` (`Command+Alt+.` for Mac), or press `F1` and then select/type `Close Tag`
+To add close tag manually, use shortcut `Alt+c` (`Command+Alt+c` for Mac), or press `F1` and then select/type `Close Tag`
 
 ![Usage](images/close-tag.gif)
 
-## Sublime Text 3 Mode
-
-To automatically add close tag when `</` is typed (same as Sublime Text 3 does), set the below config as `true`:
-```json
-{
-    "auto-close-tag.SublimeText3Mode": true
-}
-```
-The setting is `false` by default.
-
-![Sublime Text 3](images/st3.gif)
-
 ## Configuration
 
-Use `auto-close-tag.enableAutoCloseTag` to set whether to insert close tag automatically (it is `true` by default):
-```json
-{
-    "auto-close-tag.enableAutoCloseTag": true
-}
-```
 
-To set whether to close self-closing tag automatically (e.g. type `<br`, then type `/`, `>` will be added automatically) (it is `true` by default):
+Add entry into `auto-close-empty-tag.activationOnLanguage` to set the languages that the extension will be activated. Use `["*"]` to activate for all languages. Below are the default settings:
 ```json
 {
-    "auto-close-tag.enableAutoCloseSelfClosingTag": true
-}
-```
-
-Whether to insert a space before the forward slash in a self-closing tag (it is `false` by default):
-```json
-{
-    "auto-close-tag.insertSpaceBeforeSelfClosingTag": false
-}
-```
-
-Add entry into `auto-close-tag.activationOnLanguage` to set the languages that the extension will be activated. Use `["*"]` to activate for all languages. Below are the default settings:
-```json
-{
-    "auto-close-tag.activationOnLanguage": [
+    "auto-close-empty-tag.activationOnLanguage": [
         "xml",
         "php",
         "blade",
@@ -99,17 +67,17 @@ Add entry into `auto-close-tag.activationOnLanguage` to set the languages that t
 Alternatively you could also exlude the languages where you don't want the extension to be activated. Below is an example:
 ```json
 {
-    "auto-close-tag.disableOnLanguage": [
+    "auto-close-empty-tag.disableOnLanguage": [
         "php",
         "python"
     ]
 }
 ```
 
-You could also set the tag list that would not be auto closed. Below are the default settings for void elements in HTML per [W3C spec](https://www.w3.org/TR/html-markup/syntax.html#syntax-elements), and you could overwrite it:
+Set the tag list that would be auto closed. Below are the default settings for empty elements in HTML per [W3C spec](https://www.w3.org/TR/html-markup/syntax.html#syntax-elements), and you could overwrite it:
 ```json
 {
-    "auto-close-tag.excludedTags": [
+    "auto-close-empty-tag.includedTags": [
         "area",
         "base",
         "br",
@@ -130,16 +98,14 @@ You could also set the tag list that would not be auto closed. Below are the def
 }
 ```
 
-`auto-close-tag.fullMode`: Whether to enable both Visual Studio and Sublime Text mode. (Default is **false**)
-
 ## Change Log
 See Change Log [here](CHANGELOG.md)
 
 ## Issues
-Submit the [issues](https://github.com/formulahendry/vscode-auto-close-tag/issues) if you find any bug or have any suggestion.
+Submit the [issues](https://github.com/scansio/vscode-auto-close-empty-tag/issues) if you find any bug or have any suggestion.
 
 ## Contribution
-Fork the [repo](https://github.com/formulahendry/vscode-auto-close-tag) and submit pull requests.
+Fork the [repo](https://github.com/scansio/vscode-auto-close-empty-tag) and submit pull requests.
 
 ## Blog
-Visit the [blog](https://blogs.msdn.microsoft.com/formulahendry) or the [post](https://blogs.msdn.microsoft.com/formulahendry/2016/06/29/auto-close-tag-for-visual-studio-code/) for more detailed info 
+Visit the [blog](https://blogs.msdn.microsoft.com/scansio) or the [post](https://blogs.msdn.microsoft.com/scansio/2016/06/29/auto-close-empty-tag-for-visual-studio-code/) for more detailed info 

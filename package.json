@@ -1,9 +1,9 @@
 {
-    "name": "auto-close-tag",
-    "displayName": "Auto Close Tag",
-    "description": "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text",
-    "version": "0.5.15",
-    "publisher": "formulahendry",
+    "name": "auto-close-empty-tag",
+    "displayName": "Auto Close Empty Tag",
+    "description": "Properly close HTML empty tags for use in JSX",
+    "version": "0.5.16",
+    "publisher": "scansio",
     "icon": "images/logo.png",
     "engines": {
         "vscode": "^1.49.0"
@@ -21,21 +21,20 @@
         "multi-root ready"
     ],
     "bugs": {
-        "url": "https://github.com/formulahendry/vscode-auto-close-tag/issues",
-        "email": "formulahendry@gmail.com"
+        "url": "https://github.com/scansio/vscode-auto-close-empty-tag/issues",
+        "email": "scansioquielom@gmail.com"
     },
-    "homepage": "https://github.com/formulahendry/vscode-auto-close-tag/blob/master/README.md",
+    "homepage": "https://github.com/scansio/vscode-auto-close-empty-tag/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/formulahendry/vscode-auto-close-tag.git"
+        "url": "https://github.com/scansio/vscode-auto-close-empty-tag.git"
     },
     "extensionKind": [
         "ui",
         "workspace"
     ],
     "activationEvents": [
-        "*",
-        "onCommand:auto-close-tag.closeTag"
+        "onCommand:auto-close-empty-tag.closeTag"
     ],
     "main": "./out/src/extension",
     "capabilities": {
@@ -47,22 +46,22 @@
     "contributes": {
         "commands": [
             {
-                "command": "auto-close-tag.closeTag",
-                "title": "Close Tag"
+                "command": "auto-close-empty-tag.closeTag",
+                "title": "Close empty tags in JSX"
             }
         ],
         "keybindings": [
             {
-                "command": "auto-close-tag.closeTag",
-                "key": "alt+.",
-                "mac": "cmd+alt+."
+                "command": "auto-close-empty-tag.closeTag",
+                "key": "alt+c",
+                "mac": "cmd+alt+c"
             }
         ],
         "configuration": {
             "type": "object",
-            "title": "Auto Close Tag configuration",
+            "title": "Auto Close Empty Tag configuration",
             "properties": {
-                "auto-close-tag.activationOnLanguage": {
+                "auto-close-empty-tag.activationOnLanguage": {
                     "type": "array",
                     "default": [
                         "xml",
@@ -90,13 +89,13 @@
                     "description": "Set the languages that the extension will be activated.  e.g. [\"html\",\"xml\",\"php\"]. Use [\"*\"] to activate for all languages.",
                     "scope": "resource"
                 },
-                "auto-close-tag.disableOnLanguage": {
+                "auto-close-empty-tag.disableOnLanguage": {
                     "type": "array",
                     "default": [],
                     "description": "Set the languages where the extension will be disabled.  e.g. [\"html\",\"xml\",\"php\"].",
                     "scope": "resource"
                 },
-                "auto-close-tag.excludedTags": {
+                "auto-close-empty-tag.includedTags": {
                     "type": "array",
                     "default": [
                         "area",
@@ -116,37 +115,7 @@
                         "track",
                         "wbr"
                     ],
-                    "description": "Set the tag list that would not be auto closed.",
-                    "scope": "resource"
-                },
-                "auto-close-tag.SublimeText3Mode": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Auto close tag when </ is typed, same as Sublime Text 3",
-                    "scope": "resource"
-                },
-                "auto-close-tag.enableAutoCloseTag": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Whether to insert close tag automatically",
-                    "scope": "resource"
-                },
-                "auto-close-tag.enableAutoCloseSelfClosingTag": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Whether to close self-closing tag automatically",
-                    "scope": "resource"
-                },
-                "auto-close-tag.insertSpaceBeforeSelfClosingTag": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Insert a space before the forward slash in a self-closing tag.",
-                    "scope": "resource"
-                },
-                "auto-close-tag.fullMode": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Enable both Visual Studio and Sublime Text mode",
+                    "description": "Set the empty tag list that would be auto closed.",
                     "scope": "resource"
                 }
             }
@@ -154,13 +123,15 @@
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./"
+        "compile": "tsc -watch -p ./",
+        "package": "vsce package",
+        "publish": "npm run package && vsce publish"
     },
     "devDependencies": {
         "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
         "@types/vscode": "^1.49.0",
         "mocha": "^2.3.3",
-        "typescript": "^3.9.10"
+        "typescript": "^5.6.3"
     }
 }
