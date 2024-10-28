@@ -1,5 +1,8 @@
-### 0.5.15 (2023-12-09)
-* [#222](https://github.com/scansio/vscode-auto-close-empty-tag/pull/222): Fix for undo/redo
+### 0.5.17 (2024-10-28)
+* Add support to properly format comments to support JSX syntax
+
+### 0.5.16 (2024-10-25)
+* Fork this project modified to only auto close HTML empty tags to support JSX syntax
 
 ### 0.5.14 (2022-02-08)
 * Add sponsor for Duckly

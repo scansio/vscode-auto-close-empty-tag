@@ -25,24 +25,22 @@ const closeTags = (): void => {
 };
 
 const getClosedTag = (text: string, includedTags: string[]): string => {
-  let regex = new RegExp(
+  let tagRegex = new RegExp(
     `<\\s*(${includedTags.join("|")})(\\s+[^>]*)?\\/?>`,
     "g"
   );
-  let result: RegExpExecArray | null = null;
-  let stack = [];
-  while ((result = regex.exec(text)) !== null) {
-    stack.push(result[0]);
-  }
-  if (stack.length > 0) {
-    for (const resultingText of stack) {
-      let isClosed = resultingText.endsWith("/>");
-      if (!isClosed) {
-        const closedText = resultingText.slice(0, -1) + "/>";
-        text = text.replace(resultingText, closedText);
-      }
-    }
-  }
+  let commentRegex = /<!--[\s\S]*?-->/g;
+
+  // Replace unclosed tags
+  text = text.replace(tagRegex, (match) => {
+    return match.endsWith("/>") ? match : match.slice(0, -1) + "/>";
+  });
+
+  // Replace HTML comments
+  text = text.replace(commentRegex, (match) => {
+    return "{/*" + match + "*/}";
+  });
+
   return text;
 };
 
