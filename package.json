@@ -2,7 +2,7 @@
     "name": "auto-close-empty-tag",
     "displayName": "Auto Close Empty Tag",
     "description": "Properly close HTML empty tags and comments for use in JSX",
-    "version": "0.5.17",
+    "version": "0.5.18",
     "publisher": "scansio",
     "icon": "images/logo.png",
     "engines": {

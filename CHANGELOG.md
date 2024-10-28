@@ -1,3 +1,6 @@
+### 0.5.18 (2024-10-28)
+* Change usage GIF
+
 ### 0.5.17 (2024-10-28)
 * Add support to properly format comments to support JSX syntax
 

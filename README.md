@@ -16,7 +16,7 @@ Automatically close HTML/XML empty tags and properly close comments to support J
 
 To run the auto close, use shortcut `Alt+c` (`Command+Alt+c` for Mac), or press `F1` and then select/type `Close Tag`
 
-![Usage](images/close-tag.gif)
+![Usage](images/usage.gif)
 
 ## Configuration
 
